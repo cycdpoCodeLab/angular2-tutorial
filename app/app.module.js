@@ -18,6 +18,8 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 //引入AppComponent
 var app_component_1 = require('./app.component');
+//引入HeroDetailComponent
+var hero_detail_component_1 = require('./hero-detail.component');
 //我们要把元数据传给 NgModule 装饰器函数
 var AppModule = (function () {
     function AppModule() {
@@ -29,7 +31,8 @@ var AppModule = (function () {
                 forms_1.FormsModule
             ],
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                hero_detail_component_1.HeroDetailComponent
             ],
             bootstrap: [
                 app_component_1.AppComponent

@@ -10,11 +10,7 @@
 //一个或多个 import 语句来引入所需的文件。
 import { Component } from '@angular/core';
 
-//Hero类
-export class Hero {
-	id: number;
-	name: string;
-}
+import { Hero } from './hero';
 
 //模拟英雄
 const HEROES: Hero[] = [
@@ -48,14 +44,7 @@ const HEROES: Hero[] = [
 			</li>
 		</ul>
 		
-		<div *ngIf="selectedHero">
-			<h2>{{selectedHero.name}} details!</h2>
-				<div><label>id: </label>{{selectedHero.id}}</div>
-			<div>
-				<label>name: </label>
-				<input [(ngModel)]="selectedHero.name" placeholder="name">
-			</div>
-		</div>
+		<my-hero-detail [hero]="selectedHero"></my-hero-detail>
 		`,
 	styles:[`
 		.selected {

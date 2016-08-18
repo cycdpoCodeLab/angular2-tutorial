@@ -13,6 +13,9 @@ import { FormsModule }   from '@angular/forms';
 //引入AppComponent
 import { AppComponent }  from './app.component';
 
+//引入HeroDetailComponent
+import { HeroDetailComponent } from './hero-detail.component';
+
 
 //我们要把元数据传给 NgModule 装饰器函数
 @NgModule({
@@ -21,7 +24,8 @@ import { AppComponent }  from './app.component';
 		FormsModule
 	],
 	declarations: [       //从属于当前模块的组件和指令
-		AppComponent
+		AppComponent,
+		HeroDetailComponent
 	],
 	bootstrap: [          //标记出根组件，在启动应用时， Angular应该通过它来进行引导。
 		AppComponent
