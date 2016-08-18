@@ -5,26 +5,15 @@
 
 //一般使用AppComponent作为用户根组件
 
-
-
 //一个或多个 import 语句来引入所需的文件。
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Hero } from './hero';
 
-//模拟英雄
-const HEROES: Hero[] = [
-	{ id: 11, name: 'Mr. Nice' },
-	{ id: 12, name: 'Narco' },
-	{ id: 13, name: 'Bombasto' },
-	{ id: 14, name: 'Celeritas' },
-	{ id: 15, name: 'Magneta' },
-	{ id: 16, name: 'RubberMan' },
-	{ id: 17, name: 'Dynama' },
-	{ id: 18, name: 'Dr IQ' },
-	{ id: 19, name: 'Magma' },
-	{ id: 20, name: 'Tornado' }
-];
+//引入服务
+import { HeroService } from './hero.service';
+
+
 
 //Component 是一个装饰器函数，它接受一个元数据对象作为参数。 通过给这个函数加上@前缀，并使用metadata对象调用它，可以把这个“函数调用”加到组件类的紧上方。
 //@Component 是一个装饰器，它把元数据关联到组件类上。这些元数据会告诉Angular如何创建和使用组件类。
@@ -94,15 +83,29 @@ const HEROES: Hero[] = [
 			margin-right: .8em;
 			border-radius: 4px 0 0 4px;
 		}
-	`]
+	`],
+	providers: [
+		HeroService
+	]
 })
 
 //一个 组件类 来通过它的模板控制一个视图的外观和行为。
-export class AppComponent {
+export class AppComponent implements OnInit{
 	title = 'Tour of Heroes';
 
-	public heroes = HEROES;
+	//模拟英雄
+	heroes: Hero[];
 	selectedHero: Hero;
+
+	constructor(private heroService: HeroService) { }
+
+	getHeroes() {
+		this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+	}
+
+	ngOnInit() {
+		this.getHeroes();
+	}
 
 	onSelect(hero: Hero) { this.selectedHero = hero; }
 }
