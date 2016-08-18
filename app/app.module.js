@@ -15,6 +15,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //引入
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
 //引入AppComponent
 var app_component_1 = require('./app.component');
 //我们要把元数据传给 NgModule 装饰器函数
@@ -23,9 +24,16 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent] //标记出根组件，在启动应用时， Angular应该通过它来进行引导。
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule
+            ],
+            declarations: [
+                app_component_1.AppComponent
+            ],
+            bootstrap: [
+                app_component_1.AppComponent
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
