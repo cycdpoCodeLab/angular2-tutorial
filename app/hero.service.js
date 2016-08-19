@@ -22,6 +22,14 @@ var HeroService = (function () {
         //Promise异步请求，接收到响应时回调函数
         return Promise.resolve(mock_heroes_1.HEROES);
     };
+    //模拟慢连接
+    HeroService.prototype.getHeroesSlowly = function () {
+        return new Promise(function (resolve) {
+            return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
+        } //延迟两秒执行
+         //延迟两秒执行
+        );
+    };
     HeroService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

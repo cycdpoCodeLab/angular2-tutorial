@@ -110,7 +110,7 @@ export class AppComponent implements OnInit {
 		//this.heroes = this.heroService.getHeroes();
 
 		//替换为Promise异步形式
-		this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+		this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
 	}
 
 	//带有初始化逻辑的ngOnInit方法，然后留给Angular，供其在正确的时机调用
