@@ -19,6 +19,7 @@ var HeroService = (function () {
     function HeroService() {
     }
     HeroService.prototype.getHeroes = function () {
+        //Promise异步请求，接收到响应时回调函数
         return Promise.resolve(mock_heroes_1.HEROES);
     };
     HeroService = __decorate([

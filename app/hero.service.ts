@@ -5,7 +5,6 @@
 
 import { Injectable } from '@angular/core';
 
-import { Hero } from './hero';
 //引入模拟数据
 import { HEROES } from './mock-heroes';
 
@@ -16,6 +15,7 @@ import { HEROES } from './mock-heroes';
 
 export class HeroService {
 	getHeroes() {
+		//Promise异步请求，接收到响应时回调函数
 		return Promise.resolve(HEROES);
 	}
 }

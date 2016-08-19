@@ -6,6 +6,8 @@
 //一般使用AppComponent作为用户根组件
 
 //一个或多个 import 语句来引入所需的文件。
+//Component：组件
+//OnInit：生命周期
 import { Component, OnInit } from '@angular/core';
 
 import { Hero } from './hero';
@@ -84,25 +86,35 @@ import { HeroService } from './hero.service';
 			border-radius: 4px 0 0 4px;
 		}
 	`],
+	//注册一个HeroService提供商，来告诉注入器如何创建HeroService
 	providers: [
 		HeroService
 	]
 })
 
-//一个 组件类 来通过它的模板控制一个视图的外观和行为。
-export class AppComponent implements OnInit{
+//一个组件类来通过它的模板控制一个视图的外观和行为。
+//使用生命周期hook须加上 implements OnInit
+export class AppComponent implements OnInit {
 	title = 'Tour of Heroes';
 
 	//模拟英雄
 	heroes: Hero[];
 	selectedHero: Hero;
 
+	//用构造函数代替new函数的实例 heroService = new HeroService();
+	//在参数中定义了一个私有的 heroService 属性，并把它标记为注入HeroService的靶点。Angular将会知道，当它创建AppComponent实例时，需要先提供一个HeroService的实例。
+	//还需要注册一个HeroService提供商，来告诉注入器如何创建 HeroService，在@Component 组件的元数据底部添加 providers 数组属性 ：providers: [HeroService]
 	constructor(private heroService: HeroService) { }
 
 	getHeroes() {
+		//this.heroes = this.heroService.getHeroes();
+
+		//替换为Promise异步形式
 		this.heroService.getHeroes().then(heroes => this.heroes = heroes);
 	}
 
+	//带有初始化逻辑的ngOnInit方法，然后留给Angular，供其在正确的时机调用
+	//这边通过调用getHeroes来完成初始化
 	ngOnInit() {
 		this.getHeroes();
 	}
