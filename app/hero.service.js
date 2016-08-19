@@ -12,23 +12,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-//引入模拟数据
-var mock_heroes_1 = require('./mock-heroes');
 //@Injectable()装饰器一定不能忘记加上
 var HeroService = (function () {
     function HeroService() {
     }
-    HeroService.prototype.getHeroes = function () {
+    HeroService.prototype.getHeroes = function (id) {
         //Promise异步请求，接收到响应时回调函数
-        return Promise.resolve(mock_heroes_1.HEROES);
-    };
-    //模拟慢连接
-    HeroService.prototype.getHeroesSlowly = function () {
-        return new Promise(function (resolve) {
-            return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
-        } //延迟两秒执行
-         //延迟两秒执行
-        );
+        //return Promise.resolve(HEROES);
+        return this.getHeroes().then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
     };
     HeroService = __decorate([
         core_1.Injectable(), 

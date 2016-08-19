@@ -10,11 +10,18 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
-//引入AppComponent
+//引入Component
 import { AppComponent }  from './app.component';
-
-//引入HeroDetailComponent
+import { HeroesComponent }  from './heroes.component';
+import { DashboardComponent } from './dashboard.component';
 import { HeroDetailComponent } from './hero-detail.component';
+
+//引入service
+import { HeroService } from './hero.service';
+
+//引入路由
+import { routing } from './app.routing';
+
 
 
 
@@ -23,14 +30,21 @@ import { HeroDetailComponent } from './hero-detail.component';
 @NgModule({
 	imports: [            //其它模块，用来导出当前模块所需的“素材”。 几乎每个应用的根模块都要导入BrowserModule模块。
 		BrowserModule,
-		FormsModule
+		FormsModule,
+		routing
 	],
 	declarations: [       //从属于当前模块的组件和指令
 		AppComponent,
+		HeroesComponent,
+		DashboardComponent,
 		HeroDetailComponent
+	],
+	providers: [          //供应商
+		HeroService
 	],
 	bootstrap: [          //标记出根组件，在启动应用时， Angular应该通过它来进行引导。
 		AppComponent
 	]
 })
+
 export class AppModule { }

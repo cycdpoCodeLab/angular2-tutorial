@@ -16,10 +16,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
-//引入AppComponent
+//引入Component
 var app_component_1 = require('./app.component');
-//引入HeroDetailComponent
+var heroes_component_1 = require('./heroes.component');
+var dashboard_component_1 = require('./dashboard.component');
 var hero_detail_component_1 = require('./hero-detail.component');
+//引入service
+var hero_service_1 = require('./hero.service');
+//引入路由
+var app_routing_1 = require('./app.routing');
 //我们要把元数据传给 NgModule 装饰器函数
 var AppModule = (function () {
     function AppModule() {
@@ -28,11 +33,17 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                app_routing_1.routing
             ],
             declarations: [
                 app_component_1.AppComponent,
+                heroes_component_1.HeroesComponent,
+                dashboard_component_1.DashboardComponent,
                 hero_detail_component_1.HeroDetailComponent
+            ],
+            providers: [
+                hero_service_1.HeroService
             ],
             bootstrap: [
                 app_component_1.AppComponent
