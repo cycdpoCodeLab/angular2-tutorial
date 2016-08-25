@@ -3,6 +3,7 @@
  */
 
 //引入核心库
+import { ModuleWithProviders }  from '@angular/core'; //?
 import { Routes, RouterModule } from '@angular/router';
 
 //引入组件
@@ -35,4 +36,5 @@ const appRoutes: Routes = [
 
 
 //使用RouterModule.forRoot方法，导出包含了路由数组的routing常量。它返回一个配置好的路由模块，它将被加入到根 NgModule - AppModule 中。
-export const routing = RouterModule.forRoot(appRoutes);
+//export const routing = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

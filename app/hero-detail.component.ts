@@ -5,7 +5,7 @@
 //所有组件名都以Component结尾。所有组件的文件名都以.component结尾
 
 //引入
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Hero } from './hero';
@@ -19,7 +19,7 @@ import { HeroService } from './hero.service';
 
 
 export class HeroDetailComponent implements OnInit {
-	@Input()
+	//@Input()
 	hero: Hero;
 
 	constructor(
@@ -27,15 +27,15 @@ export class HeroDetailComponent implements OnInit {
 		private route: ActivatedRoute
 	){}
 
-	ngOnInit(){
+	ngOnInit(): void {
 		this.route.params.forEach((params: Params) => {
 			//英雄的id是数字，而路由参数的值总是字符串。所以我们需要通过JavaScript的(+)操作符把路由参数的值转成数字。
 			let id = +params['id'];
-			this.heroService.getHeroes(id).then(hero => this.hero = hero);
+			this.heroService.getHero(id).then(hero => this.hero = hero);
 		});
 	}
 
-	goBack () {
+	goBack(): void {
 		window.history.back();
 	}
 }

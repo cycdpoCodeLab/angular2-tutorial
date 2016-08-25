@@ -20,7 +20,8 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             //RouterOutlet 是 ROUTER_DIRECTIVES 常量中的一员。 当我们在应用中导航时，路由器就把激活的组件显示在 <router-outlet> 里面。
-            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<nav>\n\t\t\t<a routerLink=\"/dashboard\">Dashboard</a>\n\t\t\t<a routerLink=\"/heroes\">Heroes</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t"
+            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<nav>\n\t\t\t<a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a>\n\t\t\t<a routerLink=\"/heroes\" routerLinkActive=\"active\">Heroes</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
+            styleUrls: ['app/app.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

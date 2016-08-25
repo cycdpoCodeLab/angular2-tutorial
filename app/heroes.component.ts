@@ -26,7 +26,7 @@ import { HeroService } from './hero.service';
 	//template 字段指定了此组件的模板。 它用一种增强的HTML形式写成，用来告诉 Angular 如何渲染此组件的视图。可用多行模板注意符号不同
 	//[(ngModel)]="hero.name" 实现双向数据绑定
 	templateUrl: 'app/heroes.component.html',
-	styles: ['app/heroes.component.css']
+	styleUrls: ['app/heroes.component.css']
 })
 
 //一个组件类来通过它的模板控制一个视图的外观和行为。
@@ -45,7 +45,7 @@ export class HeroesComponent implements OnInit {
 		private heroService: HeroService
 	) { }
 
-	getHeroes() {
+	getHeroes():void {
 		//this.heroes = this.heroService.getHeroes();
 
 		//替换为Promise异步形式
@@ -54,13 +54,15 @@ export class HeroesComponent implements OnInit {
 
 	//带有初始化逻辑的ngOnInit方法，然后留给Angular，供其在正确的时机调用
 	//这边通过调用getHeroes来完成初始化
-	ngOnInit() {
+	ngOnInit():void {
 		this.getHeroes();
 	}
 
-	onSelect(hero: Hero) { this.selectedHero = hero; }
+	onSelect(hero: Hero):void {
+		this.selectedHero = hero;
+	}
 
-	gotoDetail() {
+	gotoDetail():void {
 		this.router.navigate(['/detail', this.selectedHero.id]);
 	}
 }

@@ -20,14 +20,14 @@ export class DashboardComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private heroService: HeroService
-	) {}
+		private heroService: HeroService) {}
 
-	ngOnInit(){
-		this.heroService.getHeroes().then(heroes => this.heroes = heroes.slice(1,5));
+	ngOnInit(): void {
+		this.heroService.getHeroes()
+						.then(heroes => this.heroes = heroes.slice(1,5));
 	}
 
-	gotoDetail(hero: Hero){
+	gotoDetail(hero: Hero): void {
 		let link = ['/detail', hero.id];
 		this.router.navigate(link);
 	}

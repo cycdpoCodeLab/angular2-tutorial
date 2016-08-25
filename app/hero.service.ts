@@ -14,14 +14,14 @@ import { Hero } from "./hero";
 
 
 export class HeroService {
-	getHero(id: number) {
+	getHero(id: number): Promise<Hero> {
 		//Promise异步请求，接收到响应时回调函数
 		//return Promise.resolve(HEROES);
 
 		return this.getHeroes().then(heroes => heroes.find(hero => hero.id === id));
 	}
 
-	getHeroes() {
+	getHeroes(): Promise<Hero[]> {
 		return Promise.resolve(HEROES);
 	}
 }

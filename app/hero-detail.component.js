@@ -15,7 +15,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //引入
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var hero_1 = require('./hero');
 var hero_service_1 = require('./hero.service');
 var HeroDetailComponent = (function () {
     function HeroDetailComponent(heroService, route) {
@@ -27,20 +26,17 @@ var HeroDetailComponent = (function () {
         this.route.params.forEach(function (params) {
             //英雄的id是数字，而路由参数的值总是字符串。所以我们需要通过JavaScript的(+)操作符把路由参数的值转成数字。
             var id = +params['id'];
-            _this.heroService.getHeroes(id).then(function (hero) { return _this.hero = hero; });
+            _this.heroService.getHero(id).then(function (hero) { return _this.hero = hero; });
         });
     };
     HeroDetailComponent.prototype.goBack = function () {
         window.history.back();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', hero_1.Hero)
-    ], HeroDetailComponent.prototype, "hero", void 0);
     HeroDetailComponent = __decorate([
         core_1.Component({
             selector: 'my-hero-detail',
-            templateUrl: 'app/hero-detail.component.html'
+            templateUrl: 'app/hero-detail.component.html',
+            styleUrls: ['app/hero-detail.component.css']
         }), 
         __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute])
     ], HeroDetailComponent);
