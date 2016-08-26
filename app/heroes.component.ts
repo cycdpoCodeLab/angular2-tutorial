@@ -33,6 +33,9 @@ import { HeroService } from './hero.service';
 //使用生命周期hook须加上 implements OnInit
 export class HeroesComponent implements OnInit {
 
+	error: any;
+	addingHero = false;
+
 	//模拟英雄
 	heroes: Hero[];
 	selectedHero: Hero;
@@ -51,6 +54,36 @@ export class HeroesComponent implements OnInit {
 		//替换为Promise异步形式
 		this.heroService.getHeroes().then(heroes => this.heroes = heroes);
 	}
+
+
+	addHero(): void {
+		this.addingHero = true;
+		this.selectedHero = null;
+	}
+
+	close(savedHero:Hero): void {
+		this.addingHero = false;
+		if (savedHero) {
+			this.getHeroes();
+		}
+	}
+
+	deleteHero(hero: Hero, event: any): void {
+		event.stopPropagation();
+		this.heroService
+			.delete(hero)
+			.then(
+				res => {
+					this.heroes = this.heroes.filter(h => h !== hero);
+					if (this.selectedHero === hero) {
+						this.selectedHero = null;
+					}
+				}
+			)
+			.catch(error => this.error = error);
+
+	}
+
 
 	//带有初始化逻辑的ngOnInit方法，然后留给Angular，供其在正确的时机调用
 	//这边通过调用getHeroes来完成初始化
